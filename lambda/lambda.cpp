@@ -21,9 +21,14 @@ int main() {
         return a + b + x;
     };
 
+    auto f6 = [a, b]() {
+        std::cout << "f6 a = " << a << ", b = " << b << "\n";
+    };
+
     f1();
     f2();
     f3();
+    f6();
     std::cout << "outside a = " << a << "\n";
     std::cout << "f4 = " << f4(3) << "\n";
 
