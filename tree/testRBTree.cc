@@ -4,31 +4,35 @@
 int main() {
     RBTree tree;
 
-    int arr[] = {10, 20, 30, 15, 25, 5, 1, 50, 60, 55};
+    int arr[] = {20, 10, 30, 5, 15, 25, 40, 3, 8, 13, 18};
     int n = sizeof(arr) / sizeof(arr[0]);
 
     for (int i = 0; i < n; ++i) {
         tree.insert(arr[i]);
     }
 
-    std::cout << "Inorder: ";
+    std::cout << "Initial inorder: ";
     tree.inorder();
     std::cout << '\n';
-
-    std::cout << "Preorder: ";
-    tree.preorder();
-    std::cout << '\n';
-
+    std::cout << "Valid: " << tree.isRBTree() << '\n';
     std::cout << "Size: " << tree.size() << '\n';
     std::cout << "Height: " << tree.height() << '\n';
+    std::cout << '\n';
 
-    std::cout << "Contains 25: " << tree.contains(25) << '\n';
-    std::cout << "Contains 100: " << tree.contains(100) << '\n';
+    int delArr[] = {3, 5, 20, 30, 10, 15};
+    int m = sizeof(delArr) / sizeof(delArr[0]);
 
-    std::cout << "Min: " << tree.findMin() << '\n';
-    std::cout << "Max: " << tree.findMax() << '\n';
-
-    std::cout << tree.isRBTree() << '\n';
+    for (int i = 0; i < m; ++i) {
+        tree.remove(delArr[i]);
+        std::cout << "After remove " << delArr[i] << ":\n";
+        std::cout << "Inorder: ";
+        tree.inorder();
+        std::cout << '\n';
+        std::cout << "Valid: " << tree.isRBTree() << '\n';
+        std::cout << "Size: " << tree.size() << '\n';
+        std::cout << "Height: " << tree.height() << '\n';
+        std::cout << '\n';
+    }
 
     return 0;
 }

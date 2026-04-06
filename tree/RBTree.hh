@@ -12,11 +12,12 @@ private:
         RBNode* left;
         RBNode* right;
 
-        RBNode(int v, Color c = RED)
+        RBNode(int v = 0, Color c = BLACK)
             : val(v), color(c), parent(nullptr), left(nullptr), right(nullptr) {}
     };
 
     RBNode* root;
+    RBNode* NIL;
 
 public:
     RBTree();
@@ -33,13 +34,15 @@ public:
     int findMin() const;
     int findMax() const;
 
-    void insert(int value);   // 你自己补
-    void remove(int value);   // 你自己补
+    void insert(int value);
+    void remove(int value);
 
     bool isRBTree() const;
 
 private:
     void destroy(RBNode* node);
+
+    void transplant(RBNode* node1, RBNode* node2);
 
     bool contains(RBNode* node, int target) const;
     int size(RBNode* node) const;
